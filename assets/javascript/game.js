@@ -64,6 +64,10 @@ var totalGuesses = 10;
 // console.log(true)
 //}
 
+//trying to figure out where to add an if statement
+//to +1 to losses when 0 guesses left
+
+//displays the results throughout the game
 function display() {
   document.getElementById("guessesLeftCounter").innerHTML = totalGuesses;
   document.getElementById("blanks").innerHTML = blanksAndAnswers.join("");
@@ -72,6 +76,8 @@ function display() {
   );
 }
 
+//displays that you have won
+//adds 1 to the winscount
 function won() {
   winsCount++;
   document.getElementById("status").innerHTML =
@@ -79,8 +85,12 @@ function won() {
   document.getElementById("winCounter").innerHTML = winsCount;
   wordGuessGame.start();
 }
+
+//displays you have lost
+//subtracts 1 from the total guesses
 function lost() {
   lossCount++;
+
   document.getElementById("status").innerHTML =
     "You Lost" + " " + "Press any letter to start again for next word";
   document.getElementById("lossCounter").innerHTML = lossCount;
@@ -88,6 +98,10 @@ function lost() {
 }
 
 const wordGuessGame = {
+  //picking a random word from the array teamsList
+  //split used to get the word and display it horizontally on screen
+  //answer comes out blank
+  //all you see are underscores for the length of the word.
   start: function() {
     totalGuesses = 10;
     //randomly choosing a word from teamsList
@@ -105,6 +119,7 @@ const wordGuessGame = {
     // console.log(start);
   },
 
+  //function to check what letter you pick and if they match the word
   checker: function(letter) {
     var letterInWord = false;
     for (var j = 0; j < bare; j++) {
@@ -123,7 +138,7 @@ const wordGuessGame = {
       totalGuesses--;
     }
   },
-
+  //Function if you run out of guesses and lose
   end: function() {
     display();
     if (letters.toString() === blanksAndAnswers.toString()) {
@@ -134,9 +149,14 @@ const wordGuessGame = {
   }
 };
 
+//this needs to be here for when the game is over
+//it will be called to start again
 wordGuessGame.start();
 
 // console.log(wordGuessGame);
+
+//tracks the letters pressed for the entire page
+//this section works with the
 
 document.addEventListener("keypress", event => {
   guessesLeft = String.fromCharCode(event.which).toLocaleLowerCase();
