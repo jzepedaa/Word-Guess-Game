@@ -39,6 +39,8 @@ var lossCount = 0;
 //total guesses
 var totalGuesses = 10;
 
+// var tempTeam = new Array();
+
 //how to build the array
 
 //start game function
@@ -114,24 +116,59 @@ const wordGuessGame = {
     //pushes out underscores for length of word
     for (var i = 0; i < bare; i++) {
       blanksAndAnswers.push("_");
-      console.log(chosenWord);
     }
-    //
+    console.log(chosenWord);
+
+    var replacingImage = function() {
+      var tempTeam = chosenWord;
+
+      if (tempTeam === "barcelona") {
+        document.getElementById("clubLogo").src =
+          "assets/images/BarcelonaLogo.png";
+      }
+
+      // var img = document.createElement("img");
+
+      // img.src = "assets/images/BarcelonaLogo.png";
+      // var src = document.getElementById("x");
+
+      // src.appendChild(img);
+
+      //   function ReplacingImage(){
+
+      //     document.getElementById("x").src="image2.png"
+
+      // }
+
+      if (chosenWord.innerHTML === "barcelona") {
+        document.getElementById("clubLogo").src =
+          "assets/images/BarcelonaLogo.png";
+        $logo.addClass("../assets/images/BarcelonaLogo.png");
+        $("#clubLogo").html(
+          "<img src=' ../assets/images/BarcelonaLogo.png' />"
+        );
+        document.getElementById("clubLogo").innerHTML =
+          '<img src="../assets/images/BarcelonaLogo.png"/>';
+      }
+
+      //team logo image
+
+      console.log(logo);
+    };
     display();
   },
   //function that checks if guessed letter matches the word
   checker: function(letter) {
     //function to set chosen letter always to false
-    //
     var letterInWord = false;
 
     //for loop to see if the letter guessed matches a letter in word
     for (var j = 0; j < bare; j++) {
       if (chosenWord[j] === letter) {
         letterInWord = true;
+        blanksAndAnswers[k] = letter;
       }
     }
-    //if the letter matches one in word it will show
     if (letterInWord) {
       for (var k = 0; k < bare; k++) {
         if (chosenWord[k] == letter) {
