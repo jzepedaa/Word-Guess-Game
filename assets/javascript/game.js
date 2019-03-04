@@ -64,6 +64,7 @@ var totalGuesses = 10;
 
 //
 
+//function to display the results
 function display() {
   document.getElementById("guessesLeftCounter").innerHTML = totalGuesses;
   document.getElementById("blanks").innerHTML = blanksAndAnswers.join("");
@@ -71,71 +72,95 @@ function display() {
     ""
   );
 }
-
-function won() {
+//function if you guessed the right team
+var won = function() {
   winsCount++;
   document.getElementById("status").innerHTML =
-    " You Won!!" + " " + "Press any letter to to guess for next word!";
+    " You Won!!" + " " + "Press any letter for next club!";
   document.getElementById("winCounter").innerHTML = winsCount;
   wordGuessGame.start();
-}
-
-function lost() {
+};
+//function if you lost and did not guess the word
+var lost = function() {
   lossCount++;
-
   document.getElementById("status").innerHTML =
-    "You Lost" + " " + "Press any letter to start again for next word";
-  document.getElementById("lossCounter").innerHTML = lossCount;
+    "You Lost" + " " + "Press any letter for the next club!";
+  document.getElementById("lossesCounter").innerHTML = lossCount;
   wordGuessGame.start();
-}
+};
+//function to reset the wrong guessed letters
+var reset = function() {
+  totalGuesses = 10;
+  document.querySelector("#wrongGuessesCounter").innerHTML = "";
+};
 
+//constant values throughout the game
 const wordGuessGame = {
+  // function to start of the game
   start: function() {
+    //starts total guesses at 10
     totalGuesses = 10;
-
+    //gets a random word from array
     chosenWord = teamsList[Math.floor(Math.random() * teamsList.length)];
-
+    //split brings word from array
     letters = chosenWord.split("");
+    //grabs the length of the word
     bare = letters.length;
+    //makes the array to any
     blanksAndAnswers = [];
+    //makes an array for wrong guesses
     wrongGuess = [];
+    //pushes out underscores for length of word
     for (var i = 0; i < bare; i++) {
       blanksAndAnswers.push("_");
+      console.log(chosenWord);
     }
+    //
     display();
   },
-
+  //function that checks if guessed letter matches the word
   checker: function(letter) {
+    //function to set chosen letter always to false
+    //
     var letterInWord = false;
+
+    //for loop to see if the letter guessed matches a letter in word
     for (var j = 0; j < bare; j++) {
       if (chosenWord[j] === letter) {
         letterInWord = true;
       }
     }
+    //if the letter matches one in word it will show
     if (letterInWord) {
       for (var k = 0; k < bare; k++) {
         if (chosenWord[k] == letter) {
           blanksAndAnswers[k] = letter;
         }
       }
+      //subtracts 1 from the total guesses if letter not in the word
     } else {
       wrongGuess.push(letter);
       totalGuesses--;
     }
   },
-
+  //function for the end of the game
   end: function() {
     display();
+    //calls for the won and reset function if you guessed the correct letters for the word
     if (letters.toString() === blanksAndAnswers.toString()) {
       won();
+      reset();
+      //calls for lost and reset functions if you have ran out of guesses
     } else if (totalGuesses === 0) {
       lost();
+      reset();
     }
   }
 };
-
+//starts the game
 wordGuessGame.start();
 
+//grabs the letter pressed
 document.addEventListener("keypress", event => {
   guessesLeft = String.fromCharCode(event.which).toLocaleLowerCase();
   wordGuessGame.checker(guessesLeft);
