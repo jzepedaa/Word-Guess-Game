@@ -57,12 +57,13 @@ var totalGuesses = 10;
 //   console.log(event);
 //   userText.textContent = event.key;
 // };
-//saw this on google and decided to try it out
+
 //document.addEventListener("keypress", (event) => {
 //let keyword = String.fromCharCode(event.keycode)
 //if(chosenWord.indexOf(keyword) > -1){
 
-//
+//i have the teams pictures. i was wonting them to be prompted to the screen
+//and have the user basically try and type out the team based off the logo
 
 //function to display the results
 function display() {
