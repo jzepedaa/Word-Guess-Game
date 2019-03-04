@@ -97,7 +97,8 @@ var reset = function() {
   document.querySelector("#wrongGuessesCounter").innerHTML = "";
 };
 
-//still trying to figure out how to make a picture pop up for every random word picked.
+//still trying to figure out how to make a picture
+//pop up for every random word picked......
 
 //constant values throughout the game
 const wordGuessGame = {
