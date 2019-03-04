@@ -118,7 +118,7 @@ const wordGuessGame = {
     wrongGuess = [];
     //pushes out underscores for length of word
     for (var i = 0; i < bare; i++) {
-      blanksAndAnswers.push("_");
+      blanksAndAnswers.push(" _ ");
     }
     console.log(chosenWord);
 
@@ -167,7 +167,7 @@ const wordGuessGame = {
     for (var j = 0; j < bare; j++) {
       if (chosenWord[j] === letter) {
         letterInWord = true;
-        blanksAndAnswers[k] = letter;
+        blanksAndAnswers[j] = letter;
       }
     }
     if (letterInWord) {
