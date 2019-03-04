@@ -119,42 +119,40 @@ const wordGuessGame = {
     }
     console.log(chosenWord);
 
-    var replacingImage = function() {
-      var tempTeam = chosenWord;
+    // var replacingImage = function() {
+    //   var tempTeam = chosenWord;
 
-      if (tempTeam === "barcelona") {
-        document.getElementById("clubLogo").src =
-          "assets/images/BarcelonaLogo.png";
-      }
+    //   if (tempTeam === "barcelona") {
+    //     document.getElementById("clubLogo").src =
+    //       "assets/images/BarcelonaLogo.png";
+    //   }
 
-      // var img = document.createElement("img");
+    // var img = document.createElement("img");
 
-      // img.src = "assets/images/BarcelonaLogo.png";
-      // var src = document.getElementById("x");
+    // img.src = "assets/images/BarcelonaLogo.png";
+    // var src = document.getElementById("x");
 
-      // src.appendChild(img);
+    // src.appendChild(img);
 
-      //   function ReplacingImage(){
+    //   function ReplacingImage(){
 
-      //     document.getElementById("x").src="image2.png"
+    //     document.getElementById("x").src="image2.png"
 
-      // }
+    // }
 
-      if (chosenWord.innerHTML === "barcelona") {
-        document.getElementById("clubLogo").src =
-          "assets/images/BarcelonaLogo.png";
-        $logo.addClass("../assets/images/BarcelonaLogo.png");
-        $("#clubLogo").html(
-          "<img src=' ../assets/images/BarcelonaLogo.png' />"
-        );
-        document.getElementById("clubLogo").innerHTML =
-          '<img src="../assets/images/BarcelonaLogo.png"/>';
-      }
+    // if (chosenWord.innerHTML === "barcelona") {
+    //   document.getElementById("clubLogo").src =
+    //     "assets/images/BarcelonaLogo.png";
+    //   $logo.addClass("../assets/images/BarcelonaLogo.png");
+    //   $("#clubLogo").html(
+    //     "<img src=' ../assets/images/BarcelonaLogo.png' />"
+    //   );
+    //   document.getElementById("clubLogo").innerHTML =
+    //     '<img src="../assets/images/BarcelonaLogo.png"/>';
+    // }
 
-      //team logo image
+    //team logo image
 
-      console.log(logo);
-    };
     display();
   },
   //function that checks if guessed letter matches the word
